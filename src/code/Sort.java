@@ -6,7 +6,7 @@ package code;
 public class Sort {
 	public static void main(String[] args) {
 		int [] A = new int []{2,0,3,5,10,1};
-		charu(A);
+		minHeapSort(A);
 		for(int i=0;i<A.length;i++){
 			System.out.print(A[i]+",");
 		}
@@ -164,13 +164,50 @@ public class Sort {
 		}
 		a[pos]=temp;
 	}
+	/**
+	 * 堆排序
+	 * 
+	 */
+	   public static void minHeapSort(int [] A){
+		   int i;
+		   int len=A.length;
+		   //构建对len/2-1,就是第一个非叶子节点
+		   for(i=len/2-1;i>=0;i--){
+			   adjustMinHeapSort(A,i,len-1);
+		   }
+		   for(i=len-1;i>=0;i--){
+			   int tmp=A[0];
+			   A[0]=A[i];
+			   A[i]=tmp;
+			   adjustMinHeapSort(A,0,i-1);
+			   
+		   }
+	   }
+	   //调整一次
+	   public static void adjustMinHeapSort(int [] A,int pos,int len){
+		   int tmp;
+		   int child = 0;
+		   //2*pos+1 为左孩子
+		   for(tmp=A[pos];2*pos+1<=len;pos=child){
+			   child=2*pos+1;
+			   //找出节点值最大的孩子
+			   if(child<len&&A[child]>A[child+1]){
+				   child++;
+			   }
+			   if(A[child]<tmp){
+				   A[pos]=A[child];
+			   }else{
+				   break;
+			   } 
+		   }
+		   A[pos] =tmp;
+	   }
 }
 
 
 /**
  * 堆排序
  */
-
 
 
 

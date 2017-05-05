@@ -1,4 +1,8 @@
 package code;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Î»ÔËËã
  * 
@@ -46,6 +50,8 @@ public class Wei {
 			}
 			n=n>>1;
 		}
+		Queue<Integer> queue = new LinkedList<Integer>();
+		//
 		return count;
 	}
 	
